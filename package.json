@@ -8,6 +8,8 @@
     "gulp-print": "^5.0.2"
   },
   "devDependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^3.1.0",
     "gulp-file-include": "^2.2.2",
     "gulp-sass": "^4.1.0",
     "gulp-watch": "^5.0.1",

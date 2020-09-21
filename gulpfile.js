@@ -2,13 +2,16 @@ var gulp = require('gulp');
 var watch = require('gulp-watch');
 var sass = require('gulp-sass');
 sass.compiler = require('node-sass');
+var concat = require('gulp-concat');
 var fileinclude = require('gulp-file-include');
 
 
 gulp.task('sass', function() {
 	return gulp.src('app/scss/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('dist/css/'));
+		// concatinating files to one
+		.pipe(concat('style.css'))
+		.pipe(gulp.dest('dist'));
 });
 
 gulp.task('js', function() {
