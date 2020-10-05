@@ -5,11 +5,13 @@ var concat = require('gulp-concat');
 var fileinclude = require('gulp-file-include');
 var imagemin = require('gulp-imagemin');
 var changed = require('gulp-changed');
+var beautify = require('gulp-beautify');
 
 
 gulp.task('sass', function() {
 	return gulp.src('app/scss/**/style.scss')
 		.pipe(sass().on('error', sass.logError))
+		.pipe(beautify.css({indent_size: 2}))
 		.pipe(gulp.dest('dist'));
 });
 

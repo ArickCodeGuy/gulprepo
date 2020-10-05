@@ -1,3 +1,88 @@
+// importing existing libs
+@import 'bootstrap-grid.min';
+
+// mixing with mixins
+@mixin vg($gap) {
+	--vg: #{$gap};
+	margin-top: calc(var(--vg) * -1);
+	> * {
+		margin-top: var(--vg);
+	}
+}
+@mixin box-paddings($vg, $hg: $vg) {
+	--vp: #{$vg};
+	--hp: #{$hg};
+	padding: var(--vp) var(--hp);
+}
+
 body {
 	background-color: #fff;
+}
+.section {
+	--section-margin: 100px;
+	position: relative;
+}
+.banner {
+	--section-padding: 100px;
+	position: relative;
+}
+.header {
+	font-size: 2rem;
+	line-height: normal;
+	margin-bottom: 40px;
+}
+.container-grid {
+	display: grid;
+	grid-gap: 30px;
+	grid-template-columns: repeat(12);
+	.header {
+		margin-bottom: 0;
+	}
+	> .item {
+		grid-column: span 12;
+	}
+}
+.items-container > *:last-child {
+	margin-bottom: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+.container-4-items {
+	grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+	grid-gap: 30px;
+	> .item-wide {
+		grid-column: span 2;
+	}
+	> .item-tall {
+		grid-row: span 2;
+	}
+}
+.container-3-items {
+	grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+	grid-gap: 30px;
+}
+.btn {
+	--btn-color: #ff0000;
+	--font-color: white;
+	min-width: 200px;
+	max-width: 100%;
+	display: inline-block;
+	padding: 5px 10px;
+	font-size: 1rem;
+	line-height: normal;
+	text-align: center;
+	background-color: var(--btn-color);
+	border: 1px solid var(--btn-color);
+	transition: .3s;
+	color: var(--font-color);
+	:hover {
+		text-decoration: none;
+		color: var(--font-color);
+		opacity: .8;
+	}
+	.btn1 {
+		--btn-color: #00ff00;
+	}
 }
