@@ -6,13 +6,16 @@ var fileinclude = require('gulp-file-include');
 var imagemin = require('gulp-imagemin');
 var changed = require('gulp-changed');
 var beautify = require('gulp-beautify');
+var sourcemaps = require('gulp-sourcemaps');
 
 
 gulp.task('sass', function() {
-	return gulp.src('app/scss/**/style.scss')
+	return gulp.src('app/scss/**/*.scss')
+		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(beautify.css({indent_size: 2}))
-		.pipe(gulp.dest('dist'));
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('js', function() {
