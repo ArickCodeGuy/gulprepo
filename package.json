@@ -25,6 +25,8 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-watch": "^5.0.1"
+    "gulp-watch": "^5.0.1",
+    "gulp-webp": "^4.0.1",
+    "gulp-webp-html": "^1.0.2"
   }
 }
