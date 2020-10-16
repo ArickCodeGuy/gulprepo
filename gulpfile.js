@@ -10,6 +10,8 @@ var beautify = require('gulp-beautify');
 var sourcemaps = require('gulp-sourcemaps');
 var webp = require('gulp-webp');
 var webpHtml = require('gulp-webp-html');
+var minifyJs = require('gulp-uglify');
+var minifyCss = require('gulp-uglifycss')
 
 
 // compiling sass, beautifying it, moving to dist
@@ -49,6 +51,19 @@ gulp.task('imagemin', function() {
 		.pipe(gulp.dest('dist/img'))
 		.pipe(webp())
 		.pipe(gulp.dest('dist/img'));
+});
+
+// adding libraries 
+gulp.task('bootstrap', function(){
+	return gulp.src('node_modules/bootstrap/scss/bootstrap-grid.scss')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(minifyCss())
+		.pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('libs', function() {
+	// may be concat all libs in one after all
+	gulp.parallel('bootstrap');
 });
 
 gulp.task('watch', function(){
