@@ -1,7 +1,8 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var sass = require('gulp-sass');
-var concat = require('gulp-concat');
+// unused plugin. Yet
+// var concat = require('gulp-concat');
 var fileinclude = require('gulp-file-include');
 var imagemin = require('gulp-imagemin');
 var changed = require('gulp-changed');
@@ -77,4 +78,8 @@ gulp.task('watch', function(){
 	gulp.watch('app/img/*', gulp.series('imgOpt'));
 });
 
-gulp.task('default', gulp.series('sass', 'js', 'html', 'watch'));
+// build task to just build project. Runs async. Ignore watch task
+gulp.task('build', gulp.parallel('sass','js', 'html', 'imgOpt', 'libs'));
+
+// default task to build project and watch changes. Runs sync
+gulp.task('default', gulp.series('build', 'watch'));
