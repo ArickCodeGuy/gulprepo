@@ -1,8 +1,7 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var sass = require('gulp-sass');
-// unused plugin. Yet
-// var concat = require('gulp-concat');
+var concat = require('gulp-concat');
 var fileinclude = require('gulp-file-include');
 var imagemin = require('gulp-imagemin');
 var changed = require('gulp-changed');
@@ -25,10 +24,12 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest('dist/css'));
 });
 
-// just transfering js file from one folder to another
+// transfer all .js files to dist. Also concat all into main.js
 gulp.task('js', function() {
 	// may be in future it'll be compiled or smth
 	return gulp.src('app/js/**/*.js')
+		.pipe(concat('main.js'))
+		.pipe(beautify.js({indent_size: 2}))
 		.pipe(gulp.dest('dist/js'));
 });
 
@@ -60,7 +61,7 @@ gulp.task('webp', function() {
 });
 gulp.task('imgOpt', gulp.parallel('imagemin','webp'));
 
-// adding bootstrap 
+// adding bootstrap
 gulp.task('bootstrap', function(){
 	return gulp.src('node_modules/bootstrap/scss/bootstrap-grid.scss')
 		.pipe(sass().on('error', sass.logError))
@@ -78,7 +79,7 @@ gulp.task('watch', function(){
 	gulp.watch('app/img/*', gulp.series('imgOpt'));
 });
 
-// build task to just build project. Runs async. Ignore watch task
+// build task to just build project. Runs async
 gulp.task('build', gulp.parallel('sass','js', 'html', 'imgOpt', 'libs'));
 
 // default task to build project and watch changes. Runs sync

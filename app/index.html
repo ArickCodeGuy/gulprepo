@@ -1,3 +1,8 @@
-@@include('templates/header.html')
+@@include('templates/header.html', {
+	"title": "Main page",
+	"custom-header-class": ""
+})
 <img src="img/image.png" alt="" class="someimageclass">
-@@include('templates/footer.html')
+@@include('templates/footer.html', {
+	"custom-footer-class": ""
+})
