@@ -6,7 +6,7 @@ var fileinclude = require('gulp-file-include');
 var imagemin = require('gulp-imagemin');
 var changed = require('gulp-changed');
 var beautify = require('gulp-beautify');
-// check sourcemaps for working
+// check sourcemaps for working properly
 // var sourcemaps = require('gulp-sourcemaps');
 var webp = require('gulp-webp');
 // adds <picture> <source> over img tag
@@ -46,12 +46,18 @@ gulp.task('html', function() {
 // minifying all images, creating .webp version of it (if it's .png, .jpg, .gif), distributing to dist
 gulp.task('imagemin', function() {
 	return gulp.src('app/img/**')
-		.pipe(changed('dist/img'))
+		.pipe(changed('dist/img/'))
 		.pipe(imagemin())
-		.pipe(gulp.dest('dist/img'))
+		.pipe(gulp.dest('dist/img'));
+});
+gulp.task('webp', function() {
+	return gulp.src('app/img/**')
+		// source is .png, .jpg, .gif, but output should be .webp
+		.pipe(changed('dist/img/',{extension: '.webp'}))
 		.pipe(webp())
 		.pipe(gulp.dest('dist/img'));
 });
+gulp.task('imgOpt', gulp.parallel('imagemin','webp'));
 
 // adding bootstrap 
 gulp.task('bootstrap', function(){
@@ -66,9 +72,9 @@ gulp.task('libs', gulp.parallel('bootstrap'));
 
 gulp.task('watch', function(){
 	gulp.watch('app/scss/**/*.scss', gulp.series('sass'));
-	gulp.watch('app/*.html', gulp.series('html'));
+	gulp.watch('app/**/*.html', gulp.series('html'));
 	gulp.watch('app/js/*.js', gulp.series('js'));
-	gulp.watch('app/img/**', gulp.series('imagemin'));
+	gulp.watch('app/img/*', gulp.series('imgOpt'));
 });
 
 gulp.task('default', gulp.series('sass', 'js', 'html', 'watch'));
