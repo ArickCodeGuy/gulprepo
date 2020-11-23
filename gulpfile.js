@@ -38,9 +38,12 @@ gulp.task('html', function() {
 	return gulp.src('app/**/*.html')
 		.pipe(fileinclude({
 			prefix: '@@',
-			basepath: '@file'
+			basepath: '@file',
+			context: {
+				items: ['']
+			}
 		}))
-		.pipe(webpHtml())
+		// .pipe(webpHtml())
 		.pipe(beautify.html({intent_size:2}))
 		.pipe(gulp.dest('dist'));
 });
@@ -59,18 +62,36 @@ gulp.task('webp', function() {
 		.pipe(webp())
 		.pipe(gulp.dest('dist/img'));
 });
-gulp.task('imgOpt', gulp.parallel('imagemin','webp'));
+gulp.task('imgOpt', gulp.parallel('imagemin'));
+
+// adding fonts from font dist
+gulp.task('fonts', function() {
+	return gulp.src('app/fonts/**')
+		.pipe(gulp.dest('dist/fonts'));
+});
 
 // adding bootstrap
-gulp.task('bootstrap', function(){
+gulp.task('bootstrap', function() {
 	return gulp.src('node_modules/bootstrap/scss/bootstrap-grid.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(minifyCss())
 		.pipe(gulp.dest('dist/libs/bootstrap'));
 });
 
+// adding jquery 
+gulp.task('jquery', function() {
+	return gulp.src('node_modules/jquery/dist/jquery.min.js')
+		.pipe(gulp.dest('dist/libs/jquery'));
+});
+
+// addng slick-carousel
+gulp.task('slick-carousel', function() {
+	return gulp.src(['node_modules/slick-carousel/slick/slick.min.js', 'node_modules/slick-carousel/slick/slick.css'])
+		.pipe(gulp.dest('dist/libs/slick'));
+});
+
 //  adding libs to project
-gulp.task('libs', gulp.parallel('bootstrap'));
+gulp.task('libs', gulp.parallel('bootstrap','jquery', 'slick-carousel'));
 
 gulp.task('watch', function(){
 	gulp.watch('app/scss/**/*.scss', gulp.series('sass'));
