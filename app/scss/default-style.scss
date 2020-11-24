@@ -5,8 +5,7 @@
 	--heading-margin: 40px;
 
 	// colors
-	--bgc: #fff;
-	--bgc-reverse: #000;
+	--color1: white;
 
 	// font defaults
 	--font-primary: #141414;
@@ -16,20 +15,40 @@
 }
 body {
 	background-color: var(--bgc);
+	font-size: var(--font-size);
+	line-height: var(--font-height);
+	color: var(--font-secondary);
 }
 .section {
+	margin-top: var(--section-margin);
+	margin-bottom: var(--section-margin);
 	position: relative;
+	&.section-first {
+		margin-top: 0;
+	}
 }
 .banner {
 	position: relative;
+	padding-top: var(--section-padding);
+	padding-bottom: var(--section-padding);
+	background-size: cover;
+	background-position: center;
 }
-.header {
+.heading {
 	font-size: 2rem;
 	line-height: normal;
 	margin-bottom: var(--heading-margin);
 }
-.items-container > *:last-child {
+.items-container :last-child {
 	margin-bottom: 0;
+}
+img, source {
+	max-width: 100%;
+	object-fit: contain;
+}
+p {
+	margin: 0;
+	margin-bottom: 1em;
 }
 ul {
 	margin: 0;
@@ -60,15 +79,12 @@ h1, h2, h3, h4, h5, h6 {
 	border: 1px solid white;
 	transition: .3s;
 	color: white;
-	:hover {
+	&:hover {
 		text-decoration: none;
 		color: var(--font-color);
 		opacity: .8;
 	}
-	:focus {
+	&:focus {
 		box-shadow: none;
-	}
-	.btn1 {
-		--btn-color: #00ff00;
 	}
 }

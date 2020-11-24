@@ -1,9 +1,11 @@
 // site defaults
-@import 'defaut-styles.scss';
+@import 'default-style.scss';
+@import 'header-style.scss';
+@import 'footer-style.scss';
 
 // components
-@import 'some-component.scss';
+@import 'components/component.scss';
 
 // pages
 // index
-@import 'index-style.scss';
+@import 'pages/index-style.scss';

@@ -62,6 +62,7 @@ gulp.task('webp', function() {
 		.pipe(webp())
 		.pipe(gulp.dest('dist/img'));
 });
+// group task for optimizing images (imagemin + webp)
 gulp.task('imgOpt', gulp.parallel('imagemin'));
 
 // adding fonts from font dist
@@ -72,9 +73,7 @@ gulp.task('fonts', function() {
 
 // adding bootstrap
 gulp.task('bootstrap', function() {
-	return gulp.src('node_modules/bootstrap/scss/bootstrap-grid.scss')
-		.pipe(sass().on('error', sass.logError))
-		.pipe(minifyCss())
+	return gulp.src(['node_modules/bootstrap/dist/css/bootstrap-grid.min.css', 'node_modules/bootstrap/dist/css/bootstrap.min.css'])
 		.pipe(gulp.dest('dist/libs/bootstrap'));
 });
 
@@ -87,11 +86,11 @@ gulp.task('jquery', function() {
 // addng slick-carousel
 gulp.task('slick-carousel', function() {
 	return gulp.src(['node_modules/slick-carousel/slick/slick.min.js', 'node_modules/slick-carousel/slick/slick.css'])
-		.pipe(gulp.dest('dist/libs/slick'));
+		.pipe(gulp.dest('dist/libs/slick-carousel'));
 });
 
 //  adding libs to project
-gulp.task('libs', gulp.parallel('bootstrap','jquery', 'slick-carousel'));
+gulp.task('libs', gulp.parallel('bootstrap', 'jquery', 'slick-carousel', 'fonts'));
 
 gulp.task('watch', function(){
 	gulp.watch('app/scss/**/*.scss', gulp.series('sass'));
