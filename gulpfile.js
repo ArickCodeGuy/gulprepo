@@ -8,29 +8,32 @@ var changed = require('gulp-changed');
 var beautify = require('gulp-beautify');
 // check sourcemaps for working properly
 // var sourcemaps = require('gulp-sourcemaps');
-var webp = require('gulp-webp');
+// var webp = require('gulp-webp');
 // adds <picture> <source> over img tag
-var webpHtml = require('gulp-webp-html');
-var minifyJs = require('gulp-uglify');
-var minifyCss = require('gulp-uglifycss');
+// var webpHtml = require('gulp-webp-html');
+// var minifyJs = require('gulp-uglify');
+// var minifyCss = require('gulp-uglifycss');
+var browserSync = require('browser-sync').create();
 
 // compiling sass, beautifying it, moving to dist
 gulp.task('sass', function() {
-	return gulp.src('app/scss/**/*.scss')
-		// .pipe(sourcemaps.init())
+	return gulp.src('app/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(beautify.css({indent_size: 2}))
-		// .pipe(sourcemaps.write())
-		.pipe(gulp.dest('dist/css'));
+		.pipe(gulp.dest('dist/'));
 });
 
 // transfer all .js files to dist. Also concat all into main.js
 gulp.task('js', function() {
 	// may be in future it'll be compiled or smth
-	return gulp.src('app/js/**/*.js')
-		.pipe(concat('main.js'))
+	return gulp.src('app/**/*.js')
+		// each individual file
 		.pipe(beautify.js({indent_size: 2}))
-		.pipe(gulp.dest('dist/js'));
+		.pipe(gulp.dest('dist/'))
+		// all in one
+		.pipe(concat('js/main.js'))
+		.pipe(beautify.js({indent_size: 2}))
+		.pipe(gulp.dest('dist/'));
 });
 
 // compiling html files
@@ -90,17 +93,35 @@ gulp.task('slick-carousel', function() {
 });
 
 //  adding libs to project
-gulp.task('libs', gulp.parallel('bootstrap', 'jquery', 'slick-carousel', 'fonts'));
+gulp.task('libs', gulp.parallel(
+		'bootstrap',
+		'jquery',
+		'slick-carousel',
+		'fonts'
+));
 
 gulp.task('watch', function(){
-	gulp.watch('app/scss/**/*.scss', gulp.series('sass'));
+	// deffinately should define individual task for this but it works for now
+	browserSync.init({
+		server: {
+			baseDir: 'dist/'
+		}
+	});
+	gulp.watch('app/**/*.scss', gulp.series('sass'));
 	gulp.watch('app/**/*.html', gulp.series('html'));
-	gulp.watch('app/js/*.js', gulp.series('js'));
+	gulp.watch('app/**/*.js', gulp.series('js'));
 	gulp.watch('app/img/*', gulp.series('imgOpt'));
+	gulp.watch('dist/**').on('change', browserSync.reload);
 });
 
 // build task to just build project. Runs async
-gulp.task('build', gulp.parallel('sass','js', 'html', 'imgOpt', 'libs'));
+gulp.task('build', gulp.parallel(
+		'sass',
+		'js',
+		'html',
+		'imgOpt',
+		'libs'
+));
 
 // default task to build project and watch changes. Runs sync
 gulp.task('default', gulp.series('build', 'watch'));

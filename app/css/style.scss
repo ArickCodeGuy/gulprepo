@@ -1,0 +1,13 @@
+// style START
+// site defaults
+@import 'default-style.scss';
+@import '../components/header/style.scss';
+@import '../components/footer/style.scss';
+
+// components
+@import '../components/component/style.scss';
+
+// pages
+// index
+@import 'pages/index-style.scss';
+// style END

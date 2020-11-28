@@ -1,3 +1,4 @@
+// default style START
 :root {
 	// margins
 	--section-margin: 100px;
@@ -23,7 +24,7 @@ body {
 	margin-top: var(--section-margin);
 	margin-bottom: var(--section-margin);
 	position: relative;
-	&.section-first {
+	&.no-mt {
 		margin-top: 0;
 	}
 }
@@ -88,3 +89,4 @@ h1, h2, h3, h4, h5, h6 {
 		box-shadow: none;
 	}
 }
+// default style END
