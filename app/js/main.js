@@ -1,3 +1,5 @@
 // mainjs START
-console.log('hi');
+jQuery(document).ready(function($) {
+	console.log('hi');
+});
 // mainjs END

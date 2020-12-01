@@ -10,13 +10,14 @@ var beautify = require('gulp-beautify');
 // var sourcemaps = require('gulp-sourcemaps');
 // var webp = require('gulp-webp');
 // adds <picture> <source> over img tag
-// var webpHtml = require('gulp-webp-html');
+var webpHtml = require('gulp-webp-html');
 // var minifyJs = require('gulp-uglify');
 // var minifyCss = require('gulp-uglifycss');
 var browserSync = require('browser-sync').create();
 
 // compiling sass, beautifying it, moving to dist
 gulp.task('sass', function() {
+	// css/style.scss should include all files
 	return gulp.src('app/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(beautify.css({indent_size: 2}))
@@ -66,7 +67,12 @@ gulp.task('webp', function() {
 		.pipe(gulp.dest('dist/img'));
 });
 // group task for optimizing images (imagemin + webp)
-gulp.task('imgOpt', gulp.parallel('imagemin'));
+gulp.task('imgOpt', 
+	gulp.parallel(
+		'imagemin',
+		// 'webp'
+	)
+);
 
 // adding fonts from font dist
 gulp.task('fonts', function() {
@@ -93,25 +99,27 @@ gulp.task('slick-carousel', function() {
 });
 
 //  adding libs to project
-gulp.task('libs', gulp.parallel(
+gulp.task('libs',
+	gulp.parallel(
 		'bootstrap',
 		'jquery',
 		'slick-carousel',
 		'fonts'
-));
+	)
+);
 
 gulp.task('watch', function(){
-	// deffinately should define individual task for this but it works for now
+	// deffinately should define browserSync as individual task for this but it works for now
 	browserSync.init({
 		server: {
 			baseDir: 'dist/'
 		}
 	});
+	gulp.watch('dist/**').on('change', browserSync.reload);
 	gulp.watch('app/**/*.scss', gulp.series('sass'));
 	gulp.watch('app/**/*.html', gulp.series('html'));
 	gulp.watch('app/**/*.js', gulp.series('js'));
 	gulp.watch('app/img/*', gulp.series('imgOpt'));
-	gulp.watch('dist/**').on('change', browserSync.reload);
 });
 
 // build task to just build project. Runs async
