@@ -92,10 +92,16 @@ gulp.task('jquery', function() {
 		.pipe(gulp.dest('dist/libs/jquery'));
 });
 
-// addng slick-carousel
-gulp.task('slick-carousel', function() {
-	return gulp.src(['node_modules/slick-carousel/slick/slick.min.js', 'node_modules/slick-carousel/slick/slick.css'])
-		.pipe(gulp.dest('dist/libs/slick-carousel'));
+// addng swiper
+gulp.task('swiper', function() {
+	return gulp.src(['node_modules/swiper/swiper-bundle.min.js', 'node_modules/swiper/swiper-bundle.min.css'])
+		.pipe(gulp.dest('dist/libs/swiper'));
+});
+
+// addng imask.js https://www.npmjs.com/package/imask
+gulp.task('imask', function() {
+	return gulp.src('node_modules/imask/dist/imask.min.js')
+		.pipe(gulp.dest('dist/libs/imask'));
 });
 
 //  adding libs to project
@@ -103,7 +109,8 @@ gulp.task('libs',
 	gulp.parallel(
 		'bootstrap',
 		'jquery',
-		'slick-carousel',
+		'swiper',
+		'imask',
 		'fonts'
 	)
 );
