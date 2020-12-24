@@ -1,13 +1,12 @@
 // style START
 // site defaults
 @import 'default-style.scss';
-@import '../components/header/style.scss';
-@import '../components/footer/style.scss';
 
 // components
-@import '../components/component/style.scss';
+@import '../components/header/style.scss';
+@import '../components/footer/style.scss';
+// @import '../components/123/index.scss';
 
-// pages
-// index
-@import 'pages/index-style.scss';
+// additional styles mostly used in custom sections
+@import 'additional-styles.scss';
 // style END

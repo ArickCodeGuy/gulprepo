@@ -33,6 +33,7 @@
     "gulp-webp-html": "^1.0.2"
   },
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
     "bootstrap": "^4.5.3",
     "imask": "^6.0.5",
     "jquery": "^3.5.1",

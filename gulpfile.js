@@ -21,12 +21,11 @@ gulp.task('sass', function() {
 	return gulp.src('app/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(beautify.css({indent_size: 2}))
-		.pipe(gulp.dest('dist/'));
+		.pipe(gulp.dest('dist'));
 });
 
 // transfer all .js files to dist. Also concat all into main.js
 gulp.task('js', function() {
-	// may be in future it'll be compiled or smth
 	return gulp.src('app/**/*.js')
 		// each individual file
 		.pipe(beautify.js({indent_size: 2}))
@@ -34,7 +33,7 @@ gulp.task('js', function() {
 		// all in one
 		.pipe(concat('js/main.js'))
 		.pipe(beautify.js({indent_size: 2}))
-		.pipe(gulp.dest('dist/'));
+		.pipe(gulp.dest('dist'));
 });
 
 // compiling html files
@@ -44,7 +43,7 @@ gulp.task('html', function() {
 			prefix: '@@',
 			basepath: '@file',
 			context: {
-				items: ['']
+				arr: ['']
 			}
 		}))
 		// .pipe(webpHtml())
@@ -98,10 +97,16 @@ gulp.task('swiper', function() {
 		.pipe(gulp.dest('dist/libs/swiper'));
 });
 
-// addng imask.js https://www.npmjs.com/package/imask
+// adding imask.js https://www.npmjs.com/package/imask
 gulp.task('imask', function() {
 	return gulp.src('node_modules/imask/dist/imask.min.js')
 		.pipe(gulp.dest('dist/libs/imask'));
+});
+
+// adding fancybox https://www.npmjs.com/package/@fancyapps/fancybox
+gulp.task('lightbox', function() {
+	return gulp.src('node_modules/@fancyapps/fancybox/dist/*')
+		.pipe(gulp.dest('dist/libs/lightbox'));
 });
 
 //  adding libs to project
@@ -111,7 +116,8 @@ gulp.task('libs',
 		'jquery',
 		'swiper',
 		'imask',
-		'fonts'
+		'lightbox',
+		'fonts',
 	)
 );
 

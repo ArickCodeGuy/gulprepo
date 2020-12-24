@@ -1,3 +1,0 @@
-// footer START
-
-// footer END
