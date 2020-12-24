@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var sass = require('gulp-sass');
+var sassGlob = require('gulp-sass-glob');
 var concat = require('gulp-concat');
 var fileinclude = require('gulp-file-include');
 var imagemin = require('gulp-imagemin');
@@ -19,6 +20,7 @@ var browserSync = require('browser-sync').create();
 gulp.task('sass', function() {
 	// css/style.scss should include all files
 	return gulp.src('app/**/*.scss')
+		.pipe(sassGlob())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(beautify.css({indent_size: 2}))
 		.pipe(gulp.dest('dist'));
