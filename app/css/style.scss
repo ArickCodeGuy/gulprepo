@@ -3,7 +3,7 @@
 @import 'default-style.scss';
 
 // components
-@import '..\\components\\**\\*.scss';
+@import '../components/**/*.scss';
 
 // additional styles mostly used in custom sections
 @import 'additional-styles.scss';
