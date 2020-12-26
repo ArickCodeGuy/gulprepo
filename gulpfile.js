@@ -11,7 +11,7 @@ var beautify = require('gulp-beautify');
 // var sourcemaps = require('gulp-sourcemaps');
 // var webp = require('gulp-webp');
 // adds <picture> <source> over img tag
-var webpHtml = require('gulp-webp-html');
+// var webpHtml = require('gulp-webp-html');
 // var minifyJs = require('gulp-uglify');
 // var minifyCss = require('gulp-uglifycss');
 var browserSync = require('browser-sync').create();
@@ -56,14 +56,14 @@ gulp.task('html', function() {
 // minifying all images, creating .webp version of it (if it's .png, .jpg, .gif), distributing to dist
 gulp.task('imagemin', function() {
 	return gulp.src('app/img/**')
-		.pipe(changed('dist/img/'))
+		.pipe(changed('dist/img'))
 		.pipe(imagemin())
 		.pipe(gulp.dest('dist/img'));
 });
 gulp.task('webp', function() {
 	return gulp.src('app/img/**')
 		// source is .png, .jpg, .gif, but output should be .webp
-		.pipe(changed('dist/img/',{extension: '.webp'}))
+		.pipe(changed('dist/img',{extension: '.webp'}))
 		.pipe(webp())
 		.pipe(gulp.dest('dist/img'));
 });
