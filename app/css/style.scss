@@ -1,10 +1,8 @@
-// style START
 // site defaults
-@import 'default-style.scss';
+@import 'defaults/**/*.scss';
 
 // components
 @import '../components/**/*.scss';
 
 // additional styles mostly used in custom sections
 @import 'additional-styles.scss';
-// style END

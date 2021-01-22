@@ -1,0 +1,47 @@
+@import '_variables.scss';
+.default-input {
+  background: #FFFFFF;
+  border: 1px solid #BFC7D8;
+  border-radius: 2px;
+  &::placeholder {
+    color: $thirdColor;
+  }
+}
+.default-label {
+  sup {
+    color: red;
+  }
+}
+.default-checkbox {
+  position: relative;
+  cursor: pointer;
+  &__input {
+    display: none;
+  }
+  &__checkbox {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid black;
+    &::after {
+      content: '';
+      position: absolute;
+      // display: none;
+      width: 4px;
+      height: 12px;
+      border: 1px solid black;
+      border-top: none;
+      border-left: none;
+      transition: .3s;
+      transform: scale(0);
+    }
+  }
+  &__input:checked ~ &__checkbox::after {
+    display: block;
+    transform: scale(1) rotate(45deg);
+  }
+}
