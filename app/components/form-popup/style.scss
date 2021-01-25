@@ -47,6 +47,8 @@
   }
   &__title {
     text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
   }
   &__form {
     display: grid;
@@ -59,6 +61,9 @@
       width: 100%;
     }
     &__submit {
+      width: 100%;
+      background-color: lightblue;
+      border-radius: 0;
     }
     &__label {
     }
@@ -68,6 +73,7 @@
     &__agreement {
       display: flex;
       align-items: flex-start;
+      margin-bottom: 30px;
       &__link {
       }
     }
