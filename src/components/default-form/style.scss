@@ -1,13 +1,15 @@
 .default-form {
+  background-color: #fff;
+  padding: 60px 40px;
+  max-width: 570px;
   &__title {
     text-align: center;
   }
   .form {
     .item {
+      &--submit {}
     }
-    &__input {
-      width: 100%;
-    }
+    &__input {}
     &__submit {}
     &__label {}
     .agreement {
@@ -16,11 +18,14 @@
       &__link {}
       &__text {}
     }
+    &__checkbox {
+      margin-right: 10px;
+    }
   }
   @media (max-width: 767.98px) {
+    padding: 60px 15px;
     &__form {
-      .item {
-      }
+      .item {}
       &__agreement {}
       &__submit {}
     }

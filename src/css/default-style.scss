@@ -82,8 +82,13 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 .default-input {
+	width: 100%;
+	border: none;
+	background-color: #fff;
+	padding: 5px 10px;
 }
-.custom-checkbox {
+.default-checkbox {
+	margin: 0;
 	position: relative;
 	&__input {
 		display: none;
@@ -110,7 +115,7 @@ h1, h2, h3, h4, h5, h6 {
 			transform: scale(0);
 		}
 	}
-	&__checkbox-input:checked ~ &__checkbox::after {
+	&__input:checked ~ &__checkbox::after {
 		display: block;
 		transform: scale(1) rotate(45deg);
 	}

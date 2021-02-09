@@ -28,19 +28,19 @@
     &::after, &::before {
       content: '';
       position: absolute;
-      width: 100%;
+      // sqrt(2) because its diagonal of square
+      width: 141.4%;
       height: 1px;
       top: 50%;
-      left: 0;
+      left: 50%;
       background-color: grey;
-      transform: rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
     }
     &::after {
-      transform: rotate(-45deg);
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
-  @media (max-width: 767.98px) {
-  }
+  @media (max-width: 767.98px) {}
 }
 .body-form-toggled {
   overflow: hidden;
