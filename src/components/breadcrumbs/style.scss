@@ -1,0 +1,19 @@
+.breadcrumbs {
+  &-section {}
+  ul {
+    margin-bottom: 0;
+  }
+  li {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  a {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  li:last-child a {
+
+  }
+  &__sep {
+  }
+}

@@ -1,0 +1,28 @@
+.default-form {
+  &__title {
+    text-align: center;
+  }
+  .form {
+    .item {
+    }
+    &__input {
+      width: 100%;
+    }
+    &__submit {}
+    &__label {}
+    .agreement {
+      display: flex;
+      align-items: flex-start;
+      &__link {}
+      &__text {}
+    }
+  }
+  @media (max-width: 767.98px) {
+    &__form {
+      .item {
+      }
+      &__agreement {}
+      &__submit {}
+    }
+  }
+}
