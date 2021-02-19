@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-size: 18px;
   line-height: normal;
-  color: $colorSecondary;
+  color: var(--color-secondary);
   @media (max-width: 991.98px) {
     font-size: 16px;
   }
@@ -33,13 +33,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
 }
 .section {
-  margin-top: $sectionMargin;
-  margin-bottom: $sectionMargin;
+  margin-top: var(--section-margin);
+  margin-bottom: var(--section-margin);
   position: relative;
 }
 .banner {
-  padding-top: $sectionPadding;
-  padding-bottom: $sectionPadding;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
   position: relative;
   background-size: cover;
   background-position: center;
@@ -49,10 +49,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .heading {
   position: relative;
-  color: $colorPrimary;
+  color: var(--color-primary);
   font-size: 2em;
   line-height: normal;
-  margin-bottom: $headingMargin;
+  margin-bottom: var(--heading-margin);
 }
 .items-container :last-child {
   margin-bottom: 0;

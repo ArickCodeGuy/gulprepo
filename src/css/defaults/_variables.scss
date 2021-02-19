@@ -1,12 +1,10 @@
-// margins
-$sectionMargin: 100px;
-$sectionPadding: 100px;
-$headingMargin: 40px;
+:root {
+  --section-margin: 100px;
+  --section-padding: 100px;
+  --heading-margin: 40px;
 
-// default colors
-// $color1: white;
+  --color1: white;
 
-// font defaults
-$colorPrimary: #141414;
-$colorSecondary: #585858;
-$thirdColor: #ADB4BA;
+  --color-primary: #141414;
+  --color-secondary: #585858;
+}
