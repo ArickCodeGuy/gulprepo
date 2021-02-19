@@ -1,4 +1,4 @@
 node_modules/
 dist/
-app/img/
-app/fonts
+src/img/
+src/fonts

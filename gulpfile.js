@@ -134,7 +134,7 @@ gulp.task('watch', function(){
   gulp.watch('src/**/*.scss', gulp.series('sass'));
   gulp.watch('src/**/*.html', gulp.series('html'));
   gulp.watch('src/**/*.js', gulp.series('js'));
-  gulp.watch('src/img/*', gulp.series('imgOpt'));
+  gulp.watch('src/img/**', gulp.series('imgOpt'));
 });
 
 // build task to just build project. Runs async
