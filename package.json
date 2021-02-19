@@ -18,12 +18,12 @@
   },
   "homepage": "https://github.com/ArickCodeGuy/gulprepo#readme",
   "devDependencies": {
-    "browser-sync": "^2.26.13",
+    "browser-sync": "^2.26.14",
     "gulp": "^4.0.2",
     "gulp-beautify": "^3.0.0",
     "gulp-changed": "^4.0.2",
     "gulp-concat": "^2.6.1",
-    "gulp-file-include": "^2.2.2",
+    "gulp-file-include": "^2.3.0",
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^4.1.0",
     "gulp-sass-glob": "^1.1.0",
@@ -34,9 +34,9 @@
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^4.6.0",
     "imask": "^6.0.5",
     "jquery": "^3.5.1",
-    "swiper": "^6.4.1"
+    "swiper": "^6.4.11"
   }
 }

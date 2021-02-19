@@ -1,0 +1,33 @@
+.default-form {
+  background-color: #fff;
+  padding: 60px 40px;
+  max-width: 570px;
+  &__title {
+    text-align: center;
+  }
+  .form {
+    .item {
+      &--submit {}
+    }
+    &__input {}
+    &__submit {}
+    &__label {}
+    .agreement {
+      display: flex;
+      align-items: flex-start;
+      &__link {}
+      &__text {}
+    }
+    &__checkbox {
+      margin-right: 10px;
+    }
+  }
+  @media (max-width: 767.98px) {
+    padding: 60px 15px;
+    &__form {
+      .item {}
+      &__agreement {}
+      &__submit {}
+    }
+  }
+}

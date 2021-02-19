@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
   $('.form-popup-toggler').click( function (e) {
     e.preventDefault();
-    $('.form-popup').slideToggle('fast');
+    $('.default-form-popup').slideToggle('fast');
     document.querySelector('body').classList.add('body-form-toggled');
   });
   $('.form-popup__close, .form-popup__body, .form-popup').click( function (e) {
