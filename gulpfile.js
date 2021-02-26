@@ -49,7 +49,7 @@ gulp.task('html', function() {
       }
     }))
     // .pipe(webpHtml())
-    .pipe(beautify.html())
+    .pipe(beautify.html({indent_size: 2}))
     .pipe(gulp.dest('dist'));
 });
 
