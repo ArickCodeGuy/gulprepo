@@ -15,6 +15,7 @@ var beautify = require('gulp-beautify');
 // var minifyJs = require('gulp-uglify');
 // var minifyCss = require('gulp-uglifycss');
 var browserSync = require('browser-sync').create();
+var autoprefixer = require('gulp-autoprefixer');
 
 // compiling sass, beautifying it, moving to dist
 gulp.task('sass', function() {
@@ -22,6 +23,7 @@ gulp.task('sass', function() {
   return gulp.src('src/**/*.scss')
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
     .pipe(beautify.css({indent_size: 2}))
     .pipe(gulp.dest('dist'));
 });
