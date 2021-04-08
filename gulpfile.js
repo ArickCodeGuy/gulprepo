@@ -83,6 +83,12 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('dist/fonts'));
 });
 
+// adding fonts from font dist
+gulp.task('notNpmLibs', function() {
+  return gulp.src('src/libs/**')
+    .pipe(gulp.dest('dist/libs/'));
+});
+
 // adding bootstrap
 gulp.task('bootstrap', function() {
   return gulp.src(['node_modules/bootstrap/dist/css/bootstrap-grid.min.css', 'node_modules/bootstrap/dist/css/bootstrap.min.css'])
@@ -121,6 +127,7 @@ gulp.task('libs',
     'swiper',
     'imask',
     'lightbox',
+    'notNpmLibs',
     'fonts',
   )
 );

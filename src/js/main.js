@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
   let phoneMaskEl = document.querySelectorAll('.phone-mask');
   for (let el of phoneMaskEl) {
   	IMask(el, {
