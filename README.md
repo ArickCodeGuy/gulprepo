@@ -18,3 +18,10 @@ every img (.jpg, .png, .svg) put in src/img/** dir gets optimized and put in dis
 
 ### Html
 To include some html code or inline .svg use `@@include('components/my-component/index.html')`
+
+### default libs
+ - Swiper
+ - JQuery
+ - fancybox
+ - bootstrap 4
+ - imask
