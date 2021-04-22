@@ -23,7 +23,8 @@ every img (.jpg, .png, .svg) put in /src/img/** dir gets optimized and put in /d
 ### Html
 To include some html code or inline .svg use
 `@@include('components/my-component/index.html')`
-More info on [link gulp file include]: https://github.com/haoxins/gulp-file-include#readme
+
+More info on: [gulp file include](https://github.com/haoxins/gulp-file-include)
 
 ### default libs
  - Swiper
