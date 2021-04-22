@@ -21,7 +21,9 @@ Every js file in /src/** dir get's concatinated in dist/js/main.js (except /src/
 every img (.jpg, .png, .svg) put in /src/img/** dir gets optimized and put in /dist/img/** dir
 
 ### Html
-To include some html code or inline .svg use `@@include('components/my-component/index.html')`
+To include some html code or inline .svg use
+`@@include('components/my-component/index.html')`
+More info on [link gulp file include]: https://github.com/haoxins/gulp-file-include#readme
 
 ### default libs
  - Swiper
